@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
+import { useDispatch } from "react-redux"; //Dispatch an action
 
+import { getPosts } from "./actions/posts";
 import reminders from "./images/reminders.png";
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
@@ -9,6 +11,11 @@ import useStyles from "./styles";
 const App = () => {
 
     const classes = useStyles();
+    const dispatch = useDispatch(); // initial the dispatch
+
+    useEffect(() => {
+        dispatch(getPosts());
+    },[dispatch]);
 
     return (
         <Container madxidth="lg">
