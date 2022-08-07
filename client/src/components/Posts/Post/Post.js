@@ -4,12 +4,13 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from "moment"
-
 import useStyles from "./styles";
-
+import { useDispatch } from "react-redux";
+import {deletePost} from "../../../actions/posts"
 
 const Post = ({ post,setCurrentId }) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     return (
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.seletedFile || "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000"} title={post.title}></CardMedia>
@@ -35,7 +36,7 @@ const Post = ({ post,setCurrentId }) => {
                     Like
                     {post.lickCount}
                 </Button>
-                <Button size="small" color="primary" onClick={()=>{}}>
+                <Button size="small" color="primary" onClick={()=>dispatch(deletePost(post._id))}>
                     <DeleteIcon fontSize="small"/>
                     Delete
                     {post.lickCount}
