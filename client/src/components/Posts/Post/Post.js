@@ -14,7 +14,7 @@ const Post = ({ post,setCurrentId }) => {
     const dispatch = useDispatch();
     return (
         <Card className={classes.card}>
-            <CardMedia className={classes.media} image={post.seletedFile || "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000"} title={post.title}></CardMedia>
+            <CardMedia className={classes.media} image={post.selectedFile || "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000"} title={post.title}></CardMedia>
             <div className={classes.overlay}>
                 <Typography variant="h6">{post.creator}</Typography>
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
