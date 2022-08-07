@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import 'dotenv/config' 
 
 import postRoutes from "./routes/posts.js";
 
@@ -15,10 +16,10 @@ app.use("/posts", postRoutes);
 // https://www.mongodb.com/cloud/atlas
 
 
-const CONECTION_URL = "mongodb+srv://admin-hal:EUceYfxGUQTyIixl@cluster0.qqsrwa6.mongodb.net/?retryWrites=true&w=majority";
+
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(CONECTION_URL, {useUnifiedTopology:true})
+mongoose.connect(process.env.CONECTION_URL, {useUnifiedTopology:true})
     .then(() => app.listen(PORT, ()=> console.log(`Server running on port: ${PORT}`)))
     .catch((error) => console.log((error.message)));
 
