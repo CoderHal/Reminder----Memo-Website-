@@ -32,7 +32,7 @@ const Navbar = () => {
     };
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
-      <div className={classes.brandContainer}>
+      <div to="/" className={classes.brandContainer}>
         <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">Reminders</Typography>
         <img className={classes.image} src={reminders} alt="icon" height="60" />
       </div>

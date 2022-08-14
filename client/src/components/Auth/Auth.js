@@ -80,8 +80,7 @@ const Auth = () => {
                         </Button>
                     )} 
                         onSuccess={googleSuccess}
-                        
-                        onError ={() => console.log("Error")}
+                      
                     />
                     <Grid container justifyContent="flex-end">
                         <Grid item>

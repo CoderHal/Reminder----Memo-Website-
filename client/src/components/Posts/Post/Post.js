@@ -31,7 +31,7 @@ const Post = ({ post, setCurrentId }) => {
     };
 
     return (
-        <Card className={classes.card}>
+        <Card className={classes.card} raised elevation={6}>
             <CardMedia className={classes.media} image={post.selectedFile || "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000"} title={post.title}></CardMedia>
             <div className={classes.overlay}>
                 <Typography variant="h6">{post.name}</Typography>
@@ -39,7 +39,7 @@ const Post = ({ post, setCurrentId }) => {
             </div>
             {(user?.result?.sub === post?.creator || user?.result?._id === post?.creator) && (
                 <div className={classes.overlay2}>
-                    <Button style={{ color: "white" }} size="small" onClick={() => setCurrentId(post._id)}>
+                    <Button style={{ color: "white" }} size="small" onClick={() => (setCurrentId(post._id))}>
                         <MoreHorizIcon fontSize="medium" />
                     </Button>
                 </div>
