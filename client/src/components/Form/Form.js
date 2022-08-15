@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from 'react-file-base64';//React Component for Converting Files to base64. It's based on Dev Mozilla Website
 import { useDispatch,useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 import useStyles from "./styles";
@@ -16,6 +17,7 @@ const Form = ({currentId, setCurrentId}) => {
     const dispatch = useDispatch();
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem("profile"));
+    const navigate = useNavigate();
   
     useEffect(() => {
       if (post) setPostData(post);
@@ -26,8 +28,9 @@ const Form = ({currentId, setCurrentId}) => {
 
         if(currentId !== 0) {
             dispatch(updatePost(currentId, {...postData,  name: user?.result?.name }));
+
         } else {
-            dispatch(createPost({...postData,  name: user?.result?.name }));
+            dispatch(createPost({...postData,  name: user?.result?.name }, navigate));
         }   
         clear(); 
     };
