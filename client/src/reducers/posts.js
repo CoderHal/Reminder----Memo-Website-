@@ -1,5 +1,5 @@
 
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, FETCH_BY_SEARCH, START_LOADING, END_LOADING } from "../constants/actionTypes"; // CREATE STATE BY CREATE LOGIC
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, FETCH_BY_SEARCH, START_LOADING, END_LOADING, FETCH_POST } from "../constants/actionTypes"; // CREATE STATE BY CREATE LOGIC
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = {isLoading:true, posts:[]}, action) => { //make the array to object
     switch (action.type) {
@@ -14,6 +14,8 @@ export default (state = {isLoading:true, posts:[]}, action) => { //make the arra
                 currentPage: action.payload.currentPage,
                 numberOfPages: action.payload.numberOfPages,
             };
+        case FETCH_POST:
+            return { ...state, post: action.payload };
         case FETCH_BY_SEARCH:
             return { ...state, posts: action.payload };
         case CREATE:
