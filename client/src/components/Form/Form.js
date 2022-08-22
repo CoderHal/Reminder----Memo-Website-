@@ -12,14 +12,19 @@ import { createPost,updatePost } from "../../actions/posts"
 
 
 const Form = ({currentId, setCurrentId}) => {
-    const [postData, setPostData] = useState({ title: "", message: "", tags: "", selectedFile: "" });
+    const [postData, setPostData] = useState({ title: "", message: "", tags: [], selectedFile: "" });
     const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
     const dispatch = useDispatch();
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem("profile"));
     const navigate = useNavigate();
-  
+    const clear = () => {
+        setCurrentId(0);
+        setPostData({ title: "", message: "", tags: "", selectedFile: "" })
+    }
+
     useEffect(() => {
+      if (!post?.title) clear();
       if (post) setPostData(post);
     }, [post]);
 
@@ -46,10 +51,7 @@ const Form = ({currentId, setCurrentId}) => {
         )
     }
     
-    const clear = () => {
-        setCurrentId(0);
-        setPostData({ title: "", message: "", tags: "", selectedFile: "" })
-    }
+
 
     return (
         <Paper className={classes.paper} elevation={6}>
